@@ -4,15 +4,20 @@
     {
         public static string DB_ADDRESS = "Data Source=db-mssql;Initial Catalog=s16943;Integrated Security=True";
 
-        
+
+
+
+
+        public static string DB_QUERRY_GET_ENROLMENT_BY_NAME_AND_STUDY_ID =
+            "SELECT IdEnrollment, Semester, StartDate, E.IdStudy " +
+            "FROM Enrollment E " +
+            "JOIN Studies S " +
+            "ON S.IdStudy = E.IdStudy " +
+            "WHERE Semester = @semester AND S.Name = @name";
 
         public static string DB_INSERT_STUDENT =
             "INSERT INTO Students(IndexNumber, FirstName, LastName, BirthDate, IdEnrollment) " +
             "VALUES(@index, @name, @LastName, @BirthDate, @EnrollmentId)";
-
-        public static string DB_SELECT_ALL_FROM_STUDENT =
-           "SELECT * " +
-           "FROM Student";
 
         public static string DB_GET_STUDY_ID_BY_STUDY_NAME =
             "SELECT IdStudy " +
@@ -24,12 +29,6 @@
             "FROM Student " +
             "WHERE IndexNumber = @IndexNumber";
 
-        public static string DB_SELECT_ALL_WHERE_ID =
-            "SELECT * " +
-            "FROM Student " +
-            "WHERE IndexNumber = @index";
-
-
         public static string DB_INSERT_ENROLMENT =
             "INSERT INTO Enrollment (IdEnrollment, IdStudy, Semester, StartDate) " +
             "VALUES (@EnrollmentId, @IdStudies, @Semester, @TodayDate)";
@@ -38,14 +37,6 @@
             "SELECT * " +
             "FROM Enrollment " +
             "WHERE Semester = @Semester AND IdStudy = @IdStudy";
-
-        public static string DB_SELECT_ALL_FROM_ENROLLMENT_JOIN__ID =
-            "SELECT e.Semester " +
-            "FROM Enrollment e " +
-            "JOIN Student s " +
-            "ON e.IdEnrollment = s.IdEnrollment " +
-            "WHERE s.IndexNumber = @id;";
-
 
         public static string DB_SELECT_MAX_ENROLLMENT =
             "SELECT MAX(IdEnrollment) " +
@@ -58,13 +49,28 @@
             "FROM Enrollment " +
             "WHERE IdEnrollment = @IdEnrollment";
 
+        public static string DB_SELECT_FRIST_NAME_FROM_STUDENT =
+            "SELECT FirstName " +
+            "FROM Student " +
+            "WHERE IndexNumber = @index";
 
-        public static string DB_QUERRY_GET_ENROLMENT_BY_NAME_AND_STUDY_ID =
-            "SELECT IdEnrollment, Semester, StartDate, E.IdStudy " +
-            "FROM Enrollment E " +
-            "JOIN Studies S " +
-            "ON S.IdStudy = E.IdStudy " +
-            "WHERE Semester = @semester AND S.Name = @name";
+        public static string DB_SELECT_ALL_FROM_ENROLLMENT_JOIN__ID =
+            "SELECT e.Semester " +
+            "FROM Enrollment e " +
+            "JOIN Student s " +
+            "ON e.IdEnrollment = s.IdEnrollment " +
+            "WHERE s.IndexNumber = @id;";
+
+        public static string DB_SELECT_ALL_WHERE_ID =
+            "SELECT * " +
+            "FROM Student " +
+            "WHERE IndexNumber = @index";
+
+        public static string DB_SELECT_ALL_FROM_STUDENT =
+            "SELECT * " +
+            "FROM Student";
+
+        
     }
 
 }

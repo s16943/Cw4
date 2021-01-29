@@ -18,12 +18,12 @@ namespace Cw4.Controllers
         public IActionResult GetStudents()
 
         {
-            List<Student> list = studentsDB.getStudentsFromDb();
+            List<Student> list = studentsDB.GetStudentsFromDb();
             return Ok(list);
         }
 
         [HttpPost]
-        public IActionResult AddStudent([FromBody] Cw4.Models.Student student)
+        public IActionResult AddStudent([FromBody] Models.Student student)
         {
             student.IndexNumber = $"s{new Random().Next(1, 20000)}";
             return Ok(student);
@@ -59,7 +59,7 @@ namespace Cw4.Controllers
         [HttpGet("getSemester/{id}")]
         public IActionResult GetSemestrByIndex(string id)
         {
-            Semester sem = studentsDB.getSemester(id);
+            Semester sem = studentsDB.GetSemester(id);
             return Ok(sem);
         }
 

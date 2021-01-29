@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Cw4.Response
+﻿namespace Cw4.Response
 {
     public class EnrollStudentResponse
     {
@@ -12,5 +7,4 @@ namespace Cw4.Response
         public string StartDate { get; set; }
         public string Studies { get; set; }
     }
-}
 }
